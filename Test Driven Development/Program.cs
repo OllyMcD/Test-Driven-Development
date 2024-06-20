@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using System.ComponentModel.Design;
 
 namespace Test_Driven_Development
 {
@@ -47,6 +48,7 @@ namespace Test_Driven_Development
             {
                 Console.WriteLine("Enter an integer: ");
                 input = Console.ReadLine();
+
             }
             return output;
         }
@@ -63,10 +65,14 @@ namespace Test_Driven_Development
                 {
                     Console.WriteLine(reader.GetString(0));
                 }
+                else
+                {
+                    Console.WriteLine("no product found with id 0");
+                }
             }
             catch (Exception)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Input incorrect");
             }
 
         }
@@ -79,8 +85,18 @@ namespace Test_Driven_Development
             using var reader = command.ExecuteReader();
             if (reader.Read())
             {
+
+            
                 Console.WriteLine(reader.GetString(0));
+
+           
+      
             }
+            else
+            {
+                Console.WriteLine("no supplier found with id 0");
+            }
+            
         }
     }
 }
